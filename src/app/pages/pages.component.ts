@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login/login.service';
 import { LoginResponseService } from '../interfaces/user.interface';
-import { Ruta } from '../interfaces/rutas.interfaces';
+import { Route } from '../interfaces/rutas.interfaces';
 import { Router } from '@angular/router';
+import { Routes } from '../globals/routes';
 
 @Component({
   selector: 'app-welcome',
@@ -13,20 +14,7 @@ export class PagesComponent implements OnInit {
   public heightScreen: string = '';
   public isCollapsed = false;
   public user: LoginResponseService = {} as LoginResponseService;
-  public rutas: Array<Ruta> = [
-    {
-      path: '/pages',
-      name: 'inicio'
-    } as Ruta,
-    {
-      path: '/pages/clientes',
-      name: 'Clientes'
-    } as Ruta,
-    {
-      path: '/pages/usuarios',
-      name: 'Usuarios'
-    } as Ruta
-  ]
+  public routes: Array<Route> = Routes;
 
   constructor(
     private loginService: LoginService,

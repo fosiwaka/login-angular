@@ -1,7 +1,0 @@
-<div>
-    <div nz-row *ngIf="{caracters: caracters$ | async} as data">
-        <div *ngFor="let caracter of data.caracters" nz-col nzFlex="auto">
-            <app-card [caracter]="caracter"></app-card>
-        </div>
-    </div>
-</div>

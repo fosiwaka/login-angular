@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { DependenciesModule } from '../dependencies/dependencies.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';  
-import { CardComponent } from './cards/cards.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -11,7 +10,7 @@ import { CardComponent } from './cards/cards.component';
     ReactiveFormsModule,
     CommonModule
   ],
-  declarations: [CardComponent],
-  exports: [  CardComponent ]
+  declarations: [],
+  exports: [ ]
 })
 export class ComponentsModule { }
