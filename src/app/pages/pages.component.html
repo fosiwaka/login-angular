@@ -35,6 +35,9 @@
     </nz-header>
     <nz-content>
       <div class="inner-content">
+        <nz-card style="width:100%">
+          <nz-page-header class="site-page-header" [nzTitle]="currentRoute.name" [nzSubtitle]="currentRoute.subtitle"></nz-page-header>
+        </nz-card>
         <router-outlet></router-outlet>
       </div>
     </nz-content>

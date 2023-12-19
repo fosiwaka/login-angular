@@ -6,12 +6,13 @@ import { ClientsComponent } from './clients/clients.component';
 import { ReportTemplatesComponent } from './report-templates/report-templates.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/pages/dashboard'},
    {
       path: '', component: PagesComponent,
       children: [
-        {
-          path: 'welcome', loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
-        },
+        // {
+        //   path: 'welcome', loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
+        // },
         {
           path: 'dashboard',
           component: DashboardComponent

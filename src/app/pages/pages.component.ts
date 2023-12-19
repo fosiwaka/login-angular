@@ -15,6 +15,7 @@ export class PagesComponent implements OnInit {
   public isCollapsed = false;
   public user: LoginResponseService = {} as LoginResponseService;
   public routes: Array<Route> = Routes;
+  public currentRoute: Route = {} as Route;
 
   constructor(
     private loginService: LoginService,
@@ -22,6 +23,11 @@ export class PagesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.routes.find((route: Route) => route.path === this.router.url) || {} as Route;
+    })
+    
+    console.log('this.currentRoute: ', this.currentRoute)
     this.heightScreen = `${screen.height -160}px`
     this.user = this.loginService.getUserClient()
   }

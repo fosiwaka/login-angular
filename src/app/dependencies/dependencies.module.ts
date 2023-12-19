@@ -77,6 +77,7 @@ import { NzQRCodeModule } from 'ng-zorro-antd/qr-code';
 import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
 import { IconsProviderModule } from '../icons-provider.module';
 
+
 @NgModule({
   imports: [
     IconsProviderModule,
@@ -153,8 +154,7 @@ import { IconsProviderModule } from '../icons-provider.module';
     NzPipesModule,
     NzCodeEditorModule,
     // NzGraphModule,
-    NzQRCodeModule,
-    NzWaterMarkModule
+    NzQRCodeModule
   ],
   exports: [
     IconsProviderModule,
