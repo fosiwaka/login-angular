@@ -1,62 +1,80 @@
+<nz-sider *ngIf="activateSider" nzCollapsible nzBreakpoint="md" [nzCollapsedWidth]="0" style="background: #54565A">
+  <ng-container *ngTemplateOutlet="menu"></ng-container>
+</nz-sider>
+
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-            nzCollapsible
-            nzWidth="256px"
-            nzBreakpoint="md"
-            [(nzCollapsed)]="isCollapsed"
-            [nzTrigger]="null">
-    <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>J Lazy Y</h1>
-      </a>
-    </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item nzMatchRouter *ngFor="let route of routes">
-        <a [routerLink]="route.path">{{route.name}}</a>
-      </li>
-    </ul>
-  </nz-sider>
-  <nz-layout>
-    <nz-header style="position: fixed;">
-      <div nz-row class="app-header">
-        <div nz-col nzSpan="2">
-          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></span>
-          </span>
+  
+  <nz-header class="ant-layout-header">
+    <div nz-row *ngIf="activateSider">
+      <div nz-col nzSpan="22">
+        <div nz-row nzJustify="center">
+          <ng-container *ngTemplateOutlet="logo"></ng-container>
         </div>
-          <div nz-col nzSpan="15">
-            <ng-container *ngTemplateOutlet="userMenu"></ng-container>
-          </div>
-        </div>
-    </nz-header>
-    <nz-content>
-      <div class="inner-content">
-        <nz-card style="width:100%">
-          <nz-page-header class="site-page-header" [nzTitle]="currentRoute.name" [nzSubtitle]="currentRoute.subtitle"></nz-page-header>
-        </nz-card>
-        <router-outlet></router-outlet>
       </div>
-    </nz-content>
-  </nz-layout>
+      <div nz-col nzSpan="2">
+          <ng-container *ngTemplateOutlet="userTemplate"></ng-container>
+      </div>
+    </div>
+    <div nz-row *ngIf="!activateSider">
+      <div nz-col nzSpan="2">
+        <ng-container *ngTemplateOutlet="logo"></ng-container>
+      </div>
+      <div nz-col nzSpan="16">
+        <div nz-row nzJustify="center">
+          <ng-container *ngTemplateOutlet="menu"></ng-container>
+        </div>
+      </div>
+      <div nz-col nzSpan="6">
+          <ng-container *ngTemplateOutlet="userTemplate"></ng-container>
+      </div>
+    </div>
+  </nz-header>
+  <nz-content>
+    <div class="inner-content">
+      <nz-card style="width:100%;" nzSize="small" [nzBodyStyle]="{padding: '0px'}">
+        <nz-page-header class="site-page-header" [nzTitle]="currentRoute.name" [nzSubtitle]="currentRoute.subtitle"></nz-page-header>
+      </nz-card>
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+  <!-- <nz-footer>Hive Insights ©2023 Implement By J Lazy Y</nz-footer> -->
 </nz-layout>
 
-<ng-template #userMenu>
-  <div nz-row style="color: white" [nzJustify]="'end'">
-    <button style="height: 64px; background: #001628; color: white; border-color: #001628;" nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
-      <span nz-icon nzType="user" nzTheme="outline" ></span>
-      <span>{{user.userName}}</span>
-    </button>
-      <nz-dropdown-menu #menu="nzDropdownMenu">
-        <ul nz-menu>
-          <li nz-menu-item (click)="loggout()">
-            <span nz-icon nzType="logout" nzTheme="outline"></span>
-            <span style="margin: 10px" >Loggout</span>
-          </li>
-        </ul>
-      </nz-dropdown-menu>
+<ng-template #logo>
+  <img src="assets/logo.svg">
+</ng-template>
+
+<ng-template #menu>
+  <ul nz-menu nzTheme="dark" [nzMode]="activateSider ? 'inline' : 'horizontal'">
+    <li nz-menu-item nzMatchRouter *ngFor="let route of routes">
+      <a [routerLink]="route.path">{{route.name}}</a>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #userTemplate>
+  <div nz-row nzJustify="end">
+    <div  *ngIf="!activateSider" nz-col nzSpan="3" ><img style="cursor: pointer;" src="assets/icons/search.svg"></div>
+    <div *ngIf="!activateSider" nz-col nzSpan="3"><img style="cursor: pointer;" src="assets/icons/bell.svg"></div>
+    <div *ngIf="!activateSider" nz-col nzSpan="3"><img style="cursor: pointer;" src="assets/icons/help.svg"></div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="4" nzLg="4" nzXl="4">
+      <nz-avatar
+        style="cursor: pointer;"
+        [nzShape]="'square'"
+        [nzSize]="'large'"
+        [nzIcon]="'user'"
+        nz-popover
+        [nzPopoverTitle]="user.userName"
+        [nzPopoverContent]="contentUserMenu"
+        nzPopoverPlacement="leftBottom"></nz-avatar>
+        <ng-template #contentUserMenu>
+          <div>
+            <p *ngIf="activateSider" class="color-menu-option" style="cursor: pointer;">Search</p>
+            <p *ngIf="activateSider" class="color-menu-option"  style="cursor: pointer;">Notifications</p>
+            <p *ngIf="activateSider" class="color-menu-option"  style="cursor: pointer;">Help</p>
+            <p class="color-menu-option"  style="cursor: pointer;" (click)="loggout()"> Logout</p>
+          </div>
+        </ng-template>
+    </div>
   </div>
 </ng-template>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.ant-card-bordered {
+    border: 1px solid #DDE1E8;
+}
+
+.ant-card {
+    border-radius: 12px;
+}
+
+.ant-layout-sider-zero-width-trigger {
+    background: #54565A;
+    top: 11px;
+    z-index: 3000;
+  }

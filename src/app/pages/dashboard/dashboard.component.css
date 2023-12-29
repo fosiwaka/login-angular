@@ -1,0 +1,24 @@
+.button-primary {
+    background: #4A88F7;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.icon-add {
+    margin-left: 6px;
+    margin-bottom: 2px;
+    width: 22px;
+}
+
+.ant-btn-1 {
+    border-radius: 10px;
+    border-color: #4A88F7 !important;
+    color: #4A88F7 !important;
+    margin: 10px;
+}
+
+.img-style-card {
+    height: 100%;
+    width: 100%;
+}

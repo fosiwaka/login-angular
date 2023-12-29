@@ -1,0 +1,152 @@
+<div nz-row nzJustify="end">
+    <button nz-button class="button-primary" nzSize="large" (click)="openNewProspects()">
+       Add New Client <img src="assets/icons/add.svg" class="icon-add">
+    </button>
+</div>
+
+<div nz-row [nzGutter]="[20, 0]">
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" nzXl="12">
+        <div nz-row  [nzGutter]="[16, 20]">
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="myPreSales"></ng-container>
+            </div>
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="clientOverview"></ng-container>
+            </div>
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="renewals"></ng-container>
+            </div>
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="teamPerformance"></ng-container>
+            </div>
+        </div>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" nzXl="12">
+        <div nz-row  [nzGutter]="[16, 20]">
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="newProspects"></ng-container>
+            </div>
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="prospectsOnboarding"></ng-container>
+            </div>
+            <div nz-col  nzSpan="24">
+                <ng-container *ngTemplateOutlet="recommendedClientCheckins"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #myPreSales>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <h1 nz-typography><strong>My Pre-Sales</strong></h1>
+        <div>
+            <img class="img-style-card" src="assets/img/myPreSales.png">
+        </div>
+    </nz-card>
+</ng-template>
+
+<ng-template #newProspects>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row nzJustify="start">
+                    <h1 nz-typography><strong>New Prospects</strong></h1>
+                </div>
+            </div>
+            <div nz-col nzSpan="4">
+                <div nz-row nzJustify="end">
+                    <button nz-button nzType="default" class="ant-btn-1 "> View all</button>
+                </div>
+            </div>
+        </div>
+    </nz-card>
+</ng-template>
+
+<ng-template #clientOverview>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <h1 nz-typography><strong>Client Overview</strong></h1>
+        <div>
+            <img class="img-style-card" src="assets/img/clientOverride.png">
+        </div>
+    </nz-card>
+</ng-template>
+
+<ng-template #prospectsOnboarding>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <h1 nz-typography><strong>Prospects Onboarding</strong></h1>
+    </nz-card>
+</ng-template>
+
+<ng-template #renewals>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <h1 nz-typography><strong>Renewals</strong></h1>
+        <div>
+            <img class="img-style-card" src="assets/img/renewal.png">
+        </div>
+    </nz-card>
+</ng-template>
+
+<ng-template #teamPerformance>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row nzJustify="start">
+                    <h1 nz-typography><strong>Team Performance</strong></h1>
+                </div>
+            </div>
+            <div nz-col nzSpan="4">
+                <div nz-row nzJustify="end">
+                    <button nz-button nzType="default" class="ant-btn-1 ">View details</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img class="img-style-card" src="assets/img/teamPerformance.png">
+        </div>
+    </nz-card>
+</ng-template>
+
+<ng-template #recommendedClientCheckins>
+    <nz-card style="width:100%" nzSize="small" [nzBodyStyle]="{padding: '10px'}">
+        <div nz-row>
+            <div nz-col nzSpan="20">
+                <div nz-row nzJustify="start">
+                    <h1 nz-typography><strong>Recommended Client Check-ins</strong></h1>
+                </div>
+            </div>
+            <div nz-col nzSpan="4">
+                <div nz-row nzJustify="end">
+                    <button nz-button nzType="default" class="ant-btn-1 "> View all</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img class="img-style-card" src="assets/img/recomendedClients.png">
+        </div>
+    </nz-card>
+</ng-template>
+
+
+<nz-drawer
+  [nzSize]="'large'"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  [nzTitle]="'Add new prospect'"
+  (nzOnClose)="closeNewProspects()"
+  [nzFooter]="footerTpl"
+  [nzWidth]="'40%'"
+>
+  <ng-container *nzDrawerContent>
+    <div>
+        <img class="img-style-card" src="assets/img/formAddDetails.png">
+    </div>
+  </ng-container>
+</nz-drawer>
+<ng-template #footerTpl>
+    <div style="float: right">
+      <button nz-button style="margin-right: 8px;" (click)="closeNewProspects()">Discard</button>
+      <button nz-button nzType="primary" (click)="closeNewProspects()">Complete</button>
+    </div>
+</ng-template>
+
+

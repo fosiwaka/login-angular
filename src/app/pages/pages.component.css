@@ -70,13 +70,42 @@ nz-header {
 }
 
 nz-content {
-  margin: 24px;
+  margin: 10px 10px 10px 10px;
 }
 
 .inner-content {
   padding: 24px;
   background: #fff;
-  height: 95%;
-  margin-top: 60px;
+  height: 100%;
   overflow-y: scroll;
 }
+
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+  background: #54565A;
+}
+
+.noHover{
+  pointer-events: none;
+}
+
+.ant-card-body {
+  padding: none;
+}
+
+.ant-layout-header {
+  background: #54565A;
+}
+
+.color-menu-option:hover {
+  background: #a8aaad;
+  color: white;
+}
+
+.color-menu-option:active {
+  background: #a8aaad;
+  color: white;
+}
+
+/* .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected  {
+  background-color: green;
+} */
